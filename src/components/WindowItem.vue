@@ -64,7 +64,6 @@ export default {
   },
   methods: {
     update(methodName = 'zindex') {
-      console.log('UPDATE', this.oldItem, this.item);
       if (methodName === 'move') {
         this.item.pos.x = this.calcGrid(this.oldItem.pos.x, this.item.pos.x);
         this.item.pos.y = this.calcGrid(this.oldItem.pos.y, this.item.pos.y);
@@ -78,14 +77,12 @@ export default {
     },
 
     calcGrid(oldVal, newVal) {
-      
       if (oldVal === newVal) {
         return oldVal;
       }
       const diff = (oldVal > newVal)? oldVal - newVal : newVal - oldVal;
       const currentDiff = Math.ceil(diff / this.gridPx) * this.gridPx;
       const newValue = (oldVal > newVal)? oldVal - currentDiff : oldVal + currentDiff;
-      console.log(oldVal, newVal, newValue);
       return newValue;
     }
 
